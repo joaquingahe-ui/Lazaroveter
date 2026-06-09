@@ -1,180 +1,541 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clínica Veterinaria | Cuidamos de tu mascota</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-        .header {
-            background: #2c5f2d;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-        .nav {
-            background: #1e3a1e;
-            padding: 0.8rem;
-            text-align: center;
-        }
-        .nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 1rem;
-            font-weight: bold;
-        }
-        .nav a:hover {
-            text-decoration: underline;
-        }
-        .hero {
-            background: #e8f5e9;
-            text-align: center;
-            padding: 3rem 1rem;
-        }
-        .hero h1 {
-            color: #2c5f2d;
-            font-size: 2.5rem;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        .service-card {
-            background: #f5f5f5;
-            padding: 1.5rem;
-            border-radius: 10px;
-            text-align: center;
-        }
-        .service-card h3 {
-            color: #2c5f2d;
-            margin-bottom: 1rem;
-        }
-        .contacto {
-            background: #e8f5e9;
-            padding: 2rem;
-            border-radius: 10px;
-            margin-top: 2rem;
-        }
-        .contacto input, .contacto textarea {
-            width: 100%;
-            padding: 0.8rem;
-            margin: 0.5rem 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .btn {
-            background: #2c5f2d;
-            color: white;
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        .btn:hover {
-            background: #1e3a1e;
-        }
-        .footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
-        }
-        .whatsapp-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25D366;
-            color: white;
-            padding: 12px 18px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-            z-index: 1000;
-        }
-        .whatsapp-btn:hover {
-            background: #128C7E;
-        }
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 1.8rem; }
-            .nav a { display: block; margin: 0.5rem 0; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica Veterinaria San Lázaro · Sevilla</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-deep: #2D6A4F;
+      --green-mid:  #40916C;
+      --green-mint: #74C69D;
+      --green-light:#D8F3DC;
+      --cream:      #F7F7F5;
+      --white:      #FFFFFF;
+      --ink:        #1A1A2E;
+      --ink-soft:   #4A4A5A;
+      --radius:     14px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 64px;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(45,106,79,0.10);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--green-deep);
+      letter-spacing: 0.01em;
+    }
+    .nav-logo span { color: var(--green-mint); }
+    .nav-cta {
+      background: var(--green-deep);
+      color: #fff;
+      padding: 8px 22px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--green-mid); transform: translateY(-1px); }
+
+    /* ── HERO ────────────────────────────────────────── */
+    #hero {
+      min-height: 100svh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 100px 5vw 60px;
+      background: linear-gradient(160deg, var(--green-light) 0%, var(--white) 55%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Paw SVG animada — firma del diseño */
+    .paw-bg {
+      position: absolute;
+      opacity: 0.06;
+      width: min(520px, 80vw);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .paw-bg path, .paw-bg circle {
+      stroke: var(--green-deep);
+      stroke-width: 2;
+      fill: var(--green-deep);
+      stroke-dasharray: 1200;
+      stroke-dashoffset: 1200;
+      animation: draw-paw 2.4s cubic-bezier(.4,0,.2,1) forwards;
+    }
+    @keyframes draw-paw {
+      to { stroke-dashoffset: 0; }
+    }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      margin-bottom: 18px;
+      opacity: 0;
+      animation: fade-up 0.7s 0.3s ease forwards;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.2rem, 9vw, 7rem);
+      font-weight: 900;
+      color: var(--ink);
+      line-height: 1.05;
+      max-width: 900px;
+      opacity: 0;
+      animation: fade-up 0.7s 0.5s ease forwards;
+    }
+    h1 em {
+      font-style: normal;
+      color: var(--green-deep);
+    }
+    .hero-sub {
+      margin-top: 22px;
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      color: var(--ink-soft);
+      font-weight: 300;
+      max-width: 460px;
+      line-height: 1.65;
+      opacity: 0;
+      animation: fade-up 0.7s 0.7s ease forwards;
+    }
+    .hero-actions {
+      margin-top: 40px;
+      display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+      opacity: 0;
+      animation: fade-up 0.7s 0.9s ease forwards;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green-deep);
+      color: #fff;
+      padding: 15px 34px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(45,106,79,0.25);
+    }
+    .btn-primary:hover { background: var(--green-mid); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(45,106,79,0.3); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent;
+      color: var(--green-deep);
+      padding: 14px 30px;
+      border-radius: 50px;
+      border: 2px solid var(--green-deep);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover { background: var(--green-deep); color: #fff; transform: translateY(-2px); }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── ADDRESS STRIP ───────────────────────────────── */
+    .address-strip {
+      background: var(--green-deep);
+      color: rgba(255,255,255,0.85);
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 0;
+    }
+    .address-strip a { text-decoration: none; }
+    .strip-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 16px 32px;
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+      border-right: 1px solid rgba(255,255,255,0.12);
+      transition: background 0.2s;
+    }
+    .strip-item:last-child { border-right: none; }
+    .strip-item:hover { background: rgba(255,255,255,0.06); }
+    .strip-item svg { flex-shrink: 0; opacity: 0.75; }
+
+    /* ── SERVICES ────────────────────────────────────── */
+    #servicios {
+      padding: 96px 5vw;
+      background: var(--cream);
+    }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--ink);
+      max-width: 520px;
+      line-height: 1.2;
+      margin-bottom: 52px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      border: 1px solid rgba(45,106,79,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: default;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(45,106,79,0.10);
+    }
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    .service-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .service-card p {
+      font-size: 0.875rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ── REVIEWS ─────────────────────────────────────── */
+    #opiniones {
+      padding: 96px 5vw;
+      background: var(--white);
+      text-align: center;
+    }
+    .review-cta-box {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      background: var(--green-light);
+      border-radius: 20px;
+      padding: 52px 60px;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+    .stars {
+      display: flex; gap: 4px;
+    }
+    .stars span { font-size: 1.5rem; }
+    .review-cta-box p {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+    .btn-google {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--white);
+      color: var(--ink);
+      padding: 13px 28px;
+      border-radius: 50px;
+      border: 1px solid rgba(0,0,0,0.12);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: box-shadow 0.2s, transform 0.15s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .btn-google:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.12); transform: translateY(-2px); }
+    .google-logo { width: 18px; height: 18px; }
+
+    /* ── CONTACT ─────────────────────────────────────── */
+    #contacto {
+      padding: 96px 5vw;
+      background: var(--green-deep);
+      color: #fff;
+      text-align: center;
+    }
+    #contacto .section-label { color: var(--green-mint); }
+    #contacto .section-title { color: #fff; margin: 0 auto 48px; }
+    .contact-cards {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 16px;
+      max-width: 900px; margin: 0 auto;
+    }
+    .contact-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      padding: 28px 36px;
+      text-decoration: none;
+      color: #fff;
+      min-width: 220px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .contact-card:hover { background: rgba(255,255,255,0.14); transform: translateY(-3px); }
+    .contact-card .cc-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.55;
+      margin-bottom: 8px;
+    }
+    .contact-card .cc-value {
+      font-size: 1.12rem;
+      font-weight: 600;
+    }
+    .cta-final {
+      margin-top: 52px;
+    }
+    .btn-white {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #fff;
+      color: var(--green-deep);
+      padding: 16px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 700;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 28px 5vw;
+      font-size: 0.8rem;
+    }
+    footer strong { color: rgba(255,255,255,0.7); }
+
+    /* ── WHATSAPP FLOAT ──────────────────────────────── */
+    .wa-float {
+      position: fixed;
+      bottom: 24px; right: 24px;
+      z-index: 200;
+      width: 56px; height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: pulse-wa 2.5s 3s ease infinite;
+    }
+    .wa-float:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,211,102,0.55); }
+    @keyframes pulse-wa {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.45); }
+      50% { box-shadow: 0 4px 32px rgba(37,211,102,0.75); }
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 600px) {
+      .strip-item { padding: 12px 18px; font-size: 0.8rem; }
+      .review-cta-box { padding: 36px 28px; }
+      #contacto .section-title { max-width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .paw-bg path, .paw-bg circle,
+      .hero-eyebrow, h1, .hero-sub, .hero-actions { animation: none; opacity: 1; }
+    }
+  </style>
 </head>
 <body>
-    <div class="header">
-        <h1>🏥 Clínica Veterinaria</h1>
-        <p>Cuidado profesional para tu mejor amigo</p>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">San <span>Lázaro</span> Vet</div>
+  <a href="https://vets.wakyma.com/reservas/reservar-cita?veterinaryId=KcpHqT0M3H"
+     target="_blank" rel="noopener" class="nav-cta">Pedir cita</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <!-- Paw signature SVG -->
+  <svg class="paw-bg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <ellipse cx="100" cy="130" rx="42" ry="38" />
+    <ellipse cx="58"  cy="88"  rx="16" ry="20" transform="rotate(-20 58 88)" />
+    <ellipse cx="88"  cy="72"  rx="14" ry="18" transform="rotate(-5 88 72)" />
+    <ellipse cx="118" cy="72"  rx="14" ry="18" transform="rotate(5 118 72)" />
+    <ellipse cx="146" cy="88"  rx="16" ry="20" transform="rotate(20 146 88)" />
+  </svg>
+
+  <p class="hero-eyebrow">Clínica Veterinaria · Sevilla</p>
+  <h1>Clínica Veterinaria<br/><em>San Lázaro</em></h1>
+  <p class="hero-sub">Atención veterinaria de confianza en el corazón de Sevilla. Medicina preventiva, urgencias y cuidado integral para tu mascota.</p>
+  <div class="hero-actions">
+    <a href="https://vets.wakyma.com/reservas/reservar-cita?veterinaryId=KcpHqT0M3H"
+       target="_blank" rel="noopener" class="btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Reservar cita online
+    </a>
+    <a href="https://wa.me/34649858822" target="_blank" rel="noopener" class="btn-secondary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L0 24l6.334-1.51A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.493-5.18-1.355l-.37-.22-3.76.897.943-3.658-.243-.378A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- ADDRESS STRIP -->
+<div class="address-strip">
+  <div class="strip-item">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Turdetania 2, Sevilla
+  </div>
+  <a href="tel:+34649858822" class="strip-item">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.03 1.2 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+    649 858 822
+  </a>
+  <a href="https://wa.me/34649858822" target="_blank" rel="noopener" class="strip-item">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color:rgba(255,255,255,0.75)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L0 24l6.334-1.51A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.493-5.18-1.355l-.37-.22-3.76.897.943-3.658-.243-.378A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    WhatsApp directo
+  </a>
+</div>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div style="max-width:1100px;margin:0 auto;">
+    <p class="section-label">Servicios</p>
+    <h2 class="section-title">Todo lo que tu mascota necesita</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🩺</div>
+        <h3>Consulta general</h3>
+        <p>Revisiones periódicas, diagnóstico y seguimiento del estado de salud de tu mascota.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💉</div>
+        <h3>Vacunaciones</h3>
+        <p>Calendario vacunal completo y personalizado según la especie, edad y estilo de vida.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔬</div>
+        <h3>Diagnóstico</h3>
+        <p>Analíticas, radiografías y pruebas de laboratorio para un diagnóstico preciso y rápido.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏥</div>
+        <h3>Cirugía</h3>
+        <p>Intervenciones quirúrgicas con equipamiento moderno y protocolo anestésico seguro.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🦷</div>
+        <h3>Odontología</h3>
+        <p>Limpieza dental, extracciones y tratamiento de patologías orales en perros y gatos.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🐾</div>
+        <h3>Desparasitación</h3>
+        <p>Programas de desparasitación interna y externa adaptados a cada paciente.</p>
+      </div>
     </div>
-    
-    <div class="nav">
-        <a href="#">Inicio</a>
-        <a href="#">Servicios</a>
-        <a href="#">Contacto</a>
-        <a href="#">Urgencias 24h</a>
+  </div>
+</section>
+
+<!-- OPINIONES GOOGLE -->
+<section id="opiniones">
+  <p class="section-label">Opiniones</p>
+  <h2 class="section-title" style="margin:0 auto 40px;max-width:460px;">Lo que dicen nuestros clientes</h2>
+  <div class="review-cta-box">
+    <div class="stars">
+      <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
     </div>
-    
-    <div class="hero">
-        <h1>40 años cuidando de tus mascotas</h1>
-        <p>Medicina preventiva, cirugía, análisis clínicos y más</p>
-        <button class="btn" style="margin-top: 1rem;">📞 Pedir cita</button>
+    <p>La confianza de nuestros clientes es nuestro mayor aval. Lee las valoraciones de quienes ya confían en nosotros en Google.</p>
+    <a href="https://www.google.com/search?q=Cl%C3%ADnica+Veterinaria+San+L%C3%A1zaro+Sevilla+Turdetania+opiniones"
+       target="_blank" rel="noopener" class="btn-google">
+      <!-- Google G logo inline SVG -->
+      <svg class="google-logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+      </svg>
+      Ver opiniones en Google
+    </a>
+  </div>
+</section>
+
+<!-- CONTACTO CTA -->
+<section id="contacto">
+  <p class="section-label">Contacto</p>
+  <h2 class="section-title">¿Hablamos?</h2>
+  <div class="contact-cards">
+    <a href="tel:+34649858822" class="contact-card">
+      <div class="cc-label">Teléfono</div>
+      <div class="cc-value">649 858 822</div>
+    </a>
+    <a href="https://wa.me/34649858822" target="_blank" rel="noopener" class="contact-card">
+      <div class="cc-label">WhatsApp</div>
+      <div class="cc-value">649 858 822</div>
+    </a>
+    <div class="contact-card" style="cursor:default;">
+      <div class="cc-label">Dirección</div>
+      <div class="cc-value">Turdetania 2, Sevilla</div>
     </div>
-    
-    <div class="container">
-        <h2 style="text-align: center;">Nuestros Servicios</h2>
-        <div class="services">
-            <div class="service-card">
-                <h3>🐕 Consulta general</h3>
-                <p>Revisión completa y vacunación</p>
-            </div>
-            <div class="service-card">
-                <h3>🏥 Cirugía</h3>
-                <p>Procedimientos con última tecnología</p>
-            </div>
-            <div class="service-card">
-                <h3>🔬 Laboratorio</h3>
-                <p>Análisis clínicos in situ</p>
-            </div>
-            <div class="service-card">
-                <h3>🩻 Ecografías</h3>
-                <p>Diagnóstico por imagen avanzado</p>
-            </div>
-        </div>
-        
-        <div class="contacto">
-            <h3>📩 Contáctanos</h3>
-            <input type="text" placeholder="Tu nombre">
-            <input type="email" placeholder="Tu email">
-            <textarea rows="4" placeholder="¿En qué podemos ayudarte?"></textarea>
-            <button class="btn">Enviar mensaje</button>
-        </div>
-    </div>
-    
-    <div class="footer">
-        <p>📍 Calle de la Veterinaria, 123 - Madrid</p>
-        <p>📞 912 345 678 | 📧 info@tuveterinaria.es</p>
-        <p>🕒 Lunes a Viernes: 9:00 - 20:00 | Sábados: 9:00 - 14:00</p>
-        <p>© 2026 Clínica Veterinaria - Todos los derechos reservados</p>
-    </div>
-    
-    <a href="https://wa.me/34123456789" class="whatsapp-btn">💬 WhatsApp</a>
+  </div>
+  <div class="cta-final">
+    <a href="https://vets.wakyma.com/reservas/reservar-cita?veterinaryId=KcpHqT0M3H"
+       target="_blank" rel="noopener" class="btn-white">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Reservar cita online ahora
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Clínica Veterinaria San Lázaro</strong> · Turdetania 2, Sevilla · 649 858 822
+</footer>
+
+<!-- WHATSAPP FLOTANTE -->
+<a href="https://wa.me/34649858822" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L0 24l6.334-1.51A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.493-5.18-1.355l-.37-.22-3.76.897.943-3.658-.243-.378A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+  </svg>
+</a>
+
 </body>
 </html>
